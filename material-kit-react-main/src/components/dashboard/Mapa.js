@@ -5,11 +5,11 @@ import {
   ComposableMap,
   Geographies,
   Geography,
-  Marker,
+  // Marker,
   ZoomableGroup
 } from 'react-simple-maps';
 
-const markers = [
+/* const markers = [
   { markerOffset: -30, name: 'Buenos Aires', coordinates: [-58.3816, -34.6037] },
   { markerOffset: 5, name: 'La Paz', coordinates: [-68.1193, -16.4897] },
   { markerOffset: 15, name: 'Brasilia', coordinates: [-47.8825, -15.7942] },
@@ -17,7 +17,7 @@ const markers = [
   { markerOffset: 15, name: 'Bogota', coordinates: [-74.0721, 4.711] },
   { markerOffset: 15, name: 'Quito', coordinates: [-78.4678, -0.1807] },
   { markerOffset: 30, name: 'Madrid', coordinates: [-3.4678, 40.1807] }
-];
+]; */
 const geoUrl = '/world-110m.json';
 
 const colorScale = scaleLinear()
@@ -73,14 +73,15 @@ const categoriafreedom = (valor) => {
   } return 'yellow';
 };
 /* variables para las leyendas */
-let c1 = 'green';
+
+/* let c1 = 'green';
 let t1 = 'TEXT';
 let c2 = 'green';
 let t2 = 'TEXT';
 let c3 = 'green';
 let t3 = 'TEXT';
 let c4 = 'green';
-let t4 = 'TEXT';
+let t4 = 'TEXT'; */
 /* eslint react/prop-types: 0 */
 const Maps = (props) => {
   const [data, setData] = useState([]);
@@ -88,8 +89,8 @@ const Maps = (props) => {
   const [data2, setData2] = useState([]);
   const [data3, setData3] = useState([]);
   const [data4, setData4] = useState([]);
-  const [center, setCenter] = useState([20, 0]);
-  const [zooom, setZoom] = useState(1);
+  //  const [center, setCenter] = useState([20, 0]);
+  //  const [zooom, setZoom] = useState(1);
   const [year, setYear] = useState('2017');
 
   useEffect(() => {
@@ -110,7 +111,7 @@ const Maps = (props) => {
         background: '#99ccff'
       }}
     >
-      <ZoomableGroup zoom={zooom} center={center}>
+      <ZoomableGroup zoom={1} center={[20, 0]}>
         <Geographies geography={geoUrl}>
           {({ geographies }) => geographies.map((geo) => {
             const d = data.find((s) => s.ISO3 === geo.properties.ISO_A3);
@@ -122,17 +123,17 @@ const Maps = (props) => {
             switch (props.indicador) {
               case 'desarrollo':
                 color = d2 ? desarrollo(data2[d2]['137506'][2019]) : '#000000';
-                t1 = 'ALTO'; t2 = 'MEDIO'; t3 = 'BAJO'; t4 = 'MUY BAJO';
-                c1 = '#003152'; c2 = '#00726a'; c3 = '#00bfad'; c4 = '#A8ECD5';
+                //  t1 = 'ALTO'; t2 = 'MEDIO'; t3 = 'BAJO'; t4 = 'MUY BAJO';
+                //  c1 = '#003152'; c2 = '#00726a'; c3 = '#00bfad'; c4 = '#A8ECD5';
                 break;
               case 'freedom':
                 color = d3 ? categoriafreedom(d3['2021']) : '#000000';
-                t1 = 'BUENO'; t2 = 'PROBLEMATICO'; t3 = 'DICIFIL'; t4 = 'MUY SERIO';
-                c1 = 'yellow'; c2 = 'orange'; c3 = 'red'; c4 = 'black';
+                //  t1 = 'BUENO'; t2 = 'PROBLEMATICO'; t3 = 'DICIFIL'; t4 = 'MUY SERIO';
+                //  c1 = 'yellow'; c2 = 'orange'; c3 = 'red'; c4 = 'black';
                 break;
               case 'vulne':
                 color = d ? colorScale(d[year]) : '#ffffff';
-                t1 = 'ALTO'; t2 = 'MEDIO'; t3 = 'BAJO'; t4 = 'MUY BAJO';
+                //  t1 = 'ALTO'; t2 = 'MEDIO'; t3 = 'BAJO'; t4 = 'MUY BAJO';
                 break;
               case 'noticias':
                 color = d1 ? '#2cff08' : 'grey';
@@ -176,7 +177,7 @@ const Maps = (props) => {
             );
           })}
         </Geographies>
-        {markers.map(({ name, coordinates, markerOffset }) => (
+        {/* {markers.map(({ name, coordinates, markerOffset }) => (
           <Marker key={name} coordinates={coordinates}>
             <g
               fill="red"
@@ -197,8 +198,9 @@ const Maps = (props) => {
               {name}
             </text>
           </Marker>
-        ))}
+        ))} */}
       </ZoomableGroup>
+      {/*
       <svg>
         <rect
           x="1"
@@ -296,6 +298,7 @@ const Maps = (props) => {
           {t4}
         </text>
       </svg>
+        */}
     </ComposableMap>
   );
 };

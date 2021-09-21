@@ -8,14 +8,14 @@ import {
 } from '@material-ui/core';
 import LatestOrders from 'src/components/dashboard//LatestOrders';
 import WorldMap from 'src/components/dashboard//WorldMap';
-import BiasIndicator from 'src/components/dashboard//BiasIndicator';
+// import BiasIndicator from 'src/components/dashboard//BiasIndicator';
 import CountryInformation from 'src/components/dashboard/CountryInformation';
 
 const Dashboard = () => {
   /* eslint-disable no-unused-vars */
   // pais año indice escogidos
   const [pais, setPais] = useState('Chile');
-  const [year, setYear] = useState('2000');
+  const [year, setYear] = useState('2018');
   const [indice, setIndice] = useState('noticias');
   const [numero, setNumero] = useState('23');
   /* eslint-disable no-unused-vars */
@@ -74,7 +74,7 @@ const Dashboard = () => {
               />
               <LatestOrders />
             </Grid>
-            <Grid
+            {/* <Grid
               item
               lg={4}
               md={6}
@@ -82,7 +82,7 @@ const Dashboard = () => {
               xs={12}
             >
               <BiasIndicator sx={{ height: '100%' }} />
-            </Grid>
+            </Grid> */}
           </Grid>
         </Container>
       </Box>

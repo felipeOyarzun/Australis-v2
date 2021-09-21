@@ -32,17 +32,13 @@ const CountryInformation = ({
   /* eslint-disable no-unused-vars */
 
   useEffect(() => {
-    console.log('render info paises');
-    csv('/vulnerability.csv').then((d) => {
-      setData(d);
-      setLoaded(false);
-    });
+    csv('/vulnerability.csv').then((d) => { setData(d); });
     csv('/medios_caleuche.csv').then((d) => { setData1(d); });
     json('/HDR2019.json').then((d) => { setData2(Object.values(d)[0]); });
     csv('/Freedom_2021.csv').then((d) => { setData3(d); });
     csv('/democracy_index.csv').then((d) => { setData4(d); });
   }, []);
-  console.log('Render  indfo paices 2');
+  console.log(data);
   const devices = [
     {
       title: 'Vulnerabilidad',
@@ -99,15 +95,15 @@ const CountryInformation = ({
             color="textPrimary"
             variant="h2"
           >
-            {loaded ? Math.trunc(data?.filter((a) => a.Name === 'CHL')[0][year] * 1000) / 1000 : 'loading...'}
+            {Math.random() * 100}
           </Typography>
         </Box>
         <Box
-          border={1}
+          border={0}
           justifyContent="flex-end"
           flexWrap="wrap"
           display="block"
-          m={2}
+          m={1}
           sx={{
             display: 'flex',
             justifyContent: 'center',
@@ -120,22 +116,29 @@ const CountryInformation = ({
             value
           }) => (
             <Box
-              border={1}
+              border={0}
               justifyContent="flex-end"
               flexWrap="wrap"
               key={title}
               display="block"
-              m={3}
+              m={1}
               sx={{
                 textAlign: 'center'
               }}
             >
-              <Icon color="action" />
+              <Typography
+                color="textPrimary"
+                variant="body1"
+              >
+                Indice
+              </Typography>
               <Typography
                 color="textPrimary"
                 variant="body1"
               >
                 {title}
+                {' '}
+                {year}
               </Typography>
               <Typography
                 style={{ color }}

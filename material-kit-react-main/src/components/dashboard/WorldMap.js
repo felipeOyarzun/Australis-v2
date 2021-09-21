@@ -21,7 +21,7 @@ import Maps from './Mapa';
 const indicadores = [
   {
     nombre: 'noticias',
-    titulo: 'NOTICIAS',
+    titulo: 'SOPHIA2',
     yearMin: '2020',
     yearMax: '2020',
     dir: '/medios_caleuche.csv'
@@ -96,7 +96,7 @@ const WorldMap = (
             </Select>
           </FormControl>
         )}
-        title="MONITOR DE INDICADORES"
+        title="MONITOR DE INDICADORES SOCIO-ECONOMICOS"
       />
       <Divider />
       <CardContent>
@@ -104,8 +104,8 @@ const WorldMap = (
           true ? (
             <Slider
               value={year}
-              min={1995}
-              max={2017}
+              min={2010}
+              max={2021}
               aria-labelledby="discrete-slider-always"
               step={1}
               marks
